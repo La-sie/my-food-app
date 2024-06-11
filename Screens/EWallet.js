@@ -76,11 +76,10 @@ export default function Ewallet(){
       <View>
         <View style={styles.namePrice}>
           <Text style={{marginRight: 35, fontSize: 15, fontWeight: 700}}>{item.name}</Text>
-          <Text style={{marginRight: 35, fontSize: 15, fontWeight: 700}}>{item.price}</Text>
+          <Text style={{fontSize: 15, fontWeight: 700}}>{item.price}</Text>
         </View>
-
         <View style={styles.dateTime}>
-        <Text style={{marginRight: 30, fontSize: 12, fontWeight: 400, color: 'gray'}}> {item.date}</Text>
+        <Text style={{marginRight: 35, fontSize: 12, fontWeight: 400, color: 'gray'}}> {item.date}</Text>
         <Text style={{fontSize: 12, fontWeight: 400, color: 'gray'}}> {item.topUp}</Text>
         </View>
      </View> 
