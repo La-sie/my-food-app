@@ -31,7 +31,7 @@ export default function Ewallet(){
       name: 'Big Garden Salad',
       price: '$ 20.00',
       date: 'Dec 16, 2024 | 4 : 42 PM',
-      topUp: 'Top Up'
+      topUp: 'Orders'
     },
     {
       id: '4',
@@ -55,7 +55,7 @@ export default function Ewallet(){
       name: 'Big Garden Salad',
       price: '$ 20.00',
       date: 'Dec 16, 2024 | 4 : 42 PM',
-      topUp: 'Top Up'
+      topUp: 'Orders'
     },
     {
       id: '7',
@@ -63,29 +63,30 @@ export default function Ewallet(){
       name: 'Big Garden Salad',
       price: '$ 20.00',
       date: 'Dec 16, 2024 | 4 : 42 PM',
-      topUp: 'Top Up'
+      topUp: 'Orders'
     },
   ]
   const renderItem = ({item}) =>(
     <View style={styles.historyCard}>
-      <Image source={item.image}/>
-      
+      <Image source={item.image} style={styles.img}/>
       <View>
-        <Text>{item.name}</Text>
-        <Text>{item.price}</Text>
-      </View>
+        <View style={styles.namePrice}>
+          <Text style={{marginRight: 35, fontSize: 15, fontWeight: 700}}>{item.name}</Text>
+          <Text>{item.price}</Text>
+        </View>
 
-      <View>
-      <Text> {item.date}</Text>
-      <Text> {item.topUp}</Text>
-      </View>
+        <View style={styles.dateTime}>
+        <Text style={{marginRight: 30, fontSize: 12, fontWeight: 400, color: 'gray'}}> {item.date}</Text>
+        <Text style={{fontSize: 12, fontWeight: 400, color: 'gray'}}> {item.topUp}</Text>
+        </View>
+     </View> 
     
     </View>
   )
   return(
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar/>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
         <Logo/>
         <Text style={{marginLeft: 15, fontWeight: 'bold', fontSize: 19}}> E-Wallet</Text>
       </View>
@@ -117,11 +118,12 @@ export default function Ewallet(){
         </View>
       </View>
 
-      <View>
-        <View>
-          <Text>Transaction History</Text>
-          <Text> See All </Text>
-        </View>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between', marginLeft: 15, marginRight: 15, marginBottom: 10}}>
+          <Text style={{fontWeight: 700, fontSize: 17}}>Transaction History</Text>
+          <Text style={{color: '#03C04A', fontWeight: 600}}> See All </Text>
+      </View>
+
+      <ScrollView>
       
       <FlatList
        data={historyData}
@@ -129,9 +131,9 @@ export default function Ewallet(){
        renderItem={renderItem}
        contentContainerStyle={styles.listContainer}
       />
-      </View>
+      </ScrollView>
     
-    </ScrollView>
+    </View>
   )
 }
 
@@ -140,7 +142,7 @@ export default function Ewallet(){
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 25,
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: '#F5F5F5'
@@ -156,7 +158,9 @@ const styles = StyleSheet.create({
     elevation: 2,
     padding: 15,
     marginTop: 25,
-    marginBottom: 15
+    marginBottom: 15,
+    marginLeft: 5,
+    marginRight: 5,
   },
   firstSection:{
     flexDirection: 'row',
@@ -193,5 +197,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 30
+  },
+  historyCard:{
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 5,
+    marginBottom: 6,
+    marginLeft: 15,
+    marginRight: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  }, 
+  img:{
+    marginRight: 10,
+    borderRadius: 60,
+    height: 70,
+    width: 70
+  },
+  namePrice:{
+    justifyContent: 'center',
+    marginTop: 10,
+    flexDirection: 'row', 
+    marginBottom: 8
+  },
+  dateTime:{
+    flexDirection: 'row',
+    justifyContent: 'center'
   }
 })
