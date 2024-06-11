@@ -1,13 +1,17 @@
-import {View, Text, StyleSheet, Image, FlatList, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import {StatusBar} from 'expo-status-bar';
 import React from 'react';
 import Logo from '../components/Logo'
-import { Feather } from '@expo/vector-icons'
-
+import { Feather } from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native';
 
 
 export default function Ewallet(){
+  const navigation = useNavigation();
+      const NextPage = () => {
+      navigation.navigate('Transaction');
+       }
   const historyData = [
     {
       id: '1',
@@ -72,7 +76,7 @@ export default function Ewallet(){
       <View>
         <View style={styles.namePrice}>
           <Text style={{marginRight: 35, fontSize: 15, fontWeight: 700}}>{item.name}</Text>
-          <Text>{item.price}</Text>
+          <Text style={{marginRight: 35, fontSize: 15, fontWeight: 700}}>{item.price}</Text>
         </View>
 
         <View style={styles.dateTime}>
@@ -120,7 +124,9 @@ export default function Ewallet(){
 
       <View style={{flexDirection: 'row', justifyContent: 'space-between', marginLeft: 15, marginRight: 15, marginBottom: 10}}>
           <Text style={{fontWeight: 700, fontSize: 17}}>Transaction History</Text>
-          <Text style={{color: '#03C04A', fontWeight: 600}}> See All </Text>
+          <TouchableOpacity onPress={NextPage}>
+           <Text style={{color: '#03C04A', fontWeight: 600, fontSize: 16}}> See All </Text>
+          </TouchableOpacity>
       </View>
 
       <ScrollView>
