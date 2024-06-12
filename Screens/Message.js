@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, FlatList, ScrollView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
+import Header from '../components/Header';
 
 
 
@@ -10,6 +10,8 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function Message(){
   return (
+    <>
+    <Header/>
     <Tab.Navigator
       screenOptions={{
         tabBarIndicatorStyle: { backgroundColor: 'green' },
@@ -20,6 +22,7 @@ export default function Message(){
       <Tab.Screen name="Chat" component={Chat} />
       <Tab.Screen name="Calls" component={Calls} />
     </Tab.Navigator>
+    </>
   );
 }
 
@@ -149,7 +152,7 @@ const Calls = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 10,
     paddingLeft: 20,
     justifyContent: 'center',
     alignItems: 'center',
