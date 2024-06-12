@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, } from 'react-native';
+import { View, Text, Image, StyleSheet} from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Header2 from '../components/Header2';
 
 const Tab = createMaterialTopTabNavigator();
 
 const OrdersScreen = () => {
   return (
-    
+    <>
+    <Header2/>
     <Tab.Navigator
       screenOptions={{
         tabBarIndicatorStyle: { backgroundColor: 'green' },
@@ -18,6 +20,7 @@ const OrdersScreen = () => {
       <Tab.Screen name="Completed" component={CompletedOrders} />
       <Tab.Screen name="Cancelled" component={CancelledOrders} />
     </Tab.Navigator>
+    </>
   );
 };
 
