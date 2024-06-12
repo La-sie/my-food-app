@@ -2,7 +2,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../Screens/HomeScreen';
 import Orders from '../Screens/Orders';
 import Message from '../Screens/Message';
-import EWallet from '../Screens/EWallet'
+import EWallet from '../Screens/EWallet';
+import ProfileScreen from '../Screens/ProfileScreen'
 
 
 const Tab = createBottomTabNavigator();
@@ -27,7 +28,7 @@ const Tabs = () =>{
         <Tab.Screen name="Orders" options={{headerShown: false}} component={Orders}/>
         <Tab.Screen name="Message" options={{headerShown: false}} component={Message}/>
         <Tab.Screen name="Ewallet" options={{headerShown: false}} component={EWallet}/>
-        <Tab.Screen name="Profile" options={{headerShown: false}} component={Home}/>
+        <Tab.Screen name="Profile" options={{headerShown: false}} component={ProfileScreen}/>
       </Tab.Navigator>
   );
 }
