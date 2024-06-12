@@ -1,36 +1,127 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import {StyleSheet, Platform } from 'react-native';
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../Screens/HomeScreen';
-import Orders from '../Screens/Orders';
 import Message from '../Screens/Message';
+import Orders from '../Screens/Orders';
 import EWallet from '../Screens/EWallet';
-import ProfileScreen from '../Screens/ProfileScreen'
+import Profile from '../Screens/ProfileScreen';
+import { AntDesign } from '@expo/vector-icons';
 
 
-const Tab = createBottomTabNavigator();
+const BottomTabNavigator = createBottomTabNavigator();
 
-const Tabs = () =>{
-  return(
-      <Tab.Navigator
-      tabBarOptions={{
-        showLabel: true,
-        style:{
-          position: 'absolute',
-          bottom: 25,
-          left: 20,
-          right: 20,
-          elevation: 0,
-          backgroundColor: 'yellow',
-          borderRadius: 15,
-          height: 80
-        }
-      }}>
-        <Tab.Screen name="Home" options={{headerShown: false}} component={Home}/>
-        <Tab.Screen name="Orders" options={{headerShown: false}} component={Orders}/>
-        <Tab.Screen name="Message" options={{headerShown: false}} component={Message}/>
-        <Tab.Screen name="Ewallet" options={{headerShown: false}} component={EWallet}/>
-        <Tab.Screen name="Profile" options={{headerShown: false}} component={ProfileScreen}/>
-      </Tab.Navigator>
+export default function BottomTab() {
+  return (
+    <BottomTabNavigator.Navigator
+      screenOptions={{
+        tabBarLabelStyle: styles.label,
+        tabBarStyle: [
+          styles.tabContainer,
+          Platform.OS === 'ios' && {
+            shadowOffset: { height: -2, width: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 15,
+          },
+        ],
+        tabBarItemStyle: {
+          marginBottom: 7,
+        },
+        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: '#03C04A',
+      }}
+      safeAreaInsets={{
+        bottom: 0,
+      }}
+    >
+      <BottomTabNavigator.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <AntDesign
+              name="home"
+              size={20}
+              color={focused ? '#03C04A' : 'gray'}
+            />
+          ),
+          headerShown: false
+        }}
+      />
+      <BottomTabNavigator.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <AntDesign
+              name="message1"
+              size={20}
+              color={focused ? '#03C04A' : 'gray'}
+            />
+          ),
+          headerShown: false
+        }}
+        name="Message"
+        component={Message}
+      />
+      <BottomTabNavigator.Screen
+        name="settings"
+        component={Orders}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <AntDesign
+              name="setting"
+              size={20}
+              color={focused ? '#03C04A' : 'gray'}
+            />
+          ),
+          headerShown: false
+        }}
+      />
+      <BottomTabNavigator.Screen
+        name="E-Wallet"
+        component={EWallet}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <AntDesign
+              name="wallet"
+              size={20}
+              color={focused ? '#03C04A' : 'gray'}
+            />
+          ),
+          headerShown: false
+        }}
+      />
+      <BottomTabNavigator.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <AntDesign
+              name="user"
+              size={20}
+              color={focused ? '#03C04A' : 'gray'}
+            />
+          ),
+          headerShown: false
+        }}
+      />
+    </BottomTabNavigator.Navigator>
   );
 }
 
-export default Tabs;
+const styles = StyleSheet.create({
+  tabContainer: {
+    position: 'absolute',
+    width: '90%',
+    borderRadius: 12,
+    left: '5%',
+    bottom: 10,
+    backgroundColor: 'white',
+    height: 60,
+    padding:5
+  },
+  label: {
+    textTransform: 'capitalize',
+    fontSize: 12,
+  },
+});
