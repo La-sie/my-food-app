@@ -10,6 +10,7 @@ import Message from '../Screens/Message';
 import EWallet from '../Screens/EWallet';
 import Transaction from '../Screens/Transaction';
 import ProfileScreen from '../Screens/ProfileScreen';
+import FoodDetailsScreen from '../Screens/FoodDetails';
 
 
 const Stack = createNativeStackNavigator();
@@ -29,6 +30,7 @@ export default function Navigate(){
       <Stack.Screen name="Ewallet" options={{headerShown: false}} component={EWallet}/>
       <Stack.Screen name="Transaction" options={{headerShown: false}} component={Transaction}/>
       <Stack.Screen name="ProfileScreen" options={{headerShown: false}} component={ProfileScreen}/>
+      <Stack.Screen name="FoodDetailsScreen" options={{headerShown: false}} component={FoodDetailsScreen}/>
     </Stack.Navigator>
     </NavigationContainer>
   )
