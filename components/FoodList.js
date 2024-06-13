@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, FlatList, Dimensions, TouchableOpacity , ScrollView} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import {useNavigation} from '@react-navigation/native';
 
 const foodData = [
   {
@@ -61,8 +62,13 @@ const foodData = [
   },
 ];
 
-const FoodListScreen = () => {
+export default FoodListScreen = () => {
+    const navigation = useNavigation();
+    const NextPage = () => {
+    navigation.navigate('FoodDetailsScreen');
+    }
   const renderItem = ({ item }) => (
+    <TouchableOpacity onPress={NextPage}>
     <View style={styles.card}>
       <Image source={item.image} style={styles.image} />
       <View style={styles.infoContainer}>
@@ -75,6 +81,7 @@ const FoodListScreen = () => {
         </View>
       </View>
     </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -142,5 +149,3 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
   },
 });
-
-export default FoodListScreen;
