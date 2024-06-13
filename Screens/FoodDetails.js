@@ -1,9 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useNavigation} from '@react-navigation/native';
+import {StatusBar} from 'expo-status-bar';
+
 
 const FoodDetailsScreen = () => {
+  const navigation = useNavigation();
+  const PrevButton = () => {
+  navigation.navigate('Home');
+  }
   return (
+    <>
+    <StatusBar/>
     <ScrollView style={styles.container}>
       <View style={styles.imageContainer}>
         <Image
@@ -11,15 +20,15 @@ const FoodDetailsScreen = () => {
           style={styles.foodImage}
         />
         <View style={styles.iconContainer}>
-          <TouchableOpacity style={styles.icon}>
-            <Icon name="arrow-back" size={24} color="#000" />
+          <TouchableOpacity onPress={PrevButton}>
+            <Icon name="arrow-back" size={24} color="#fff" />
           </TouchableOpacity>
           <View style={styles.rightIcons}>
-            <TouchableOpacity style={styles.icon}>
-              <Icon name="heart-outline" size={24} color="#000" />
+            <TouchableOpacity>
+              <Icon name="heart-outline" size={24} color="#fff" />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.icon}>
-              <Icon name="share-social-outline" size={24} color="#000" />
+            <TouchableOpacity>
+              <Icon name="share-social-outline" size={24} color="#fff" style={{marginLeft: 5}}/>
             </TouchableOpacity>
           </View>
         </View>
@@ -27,18 +36,23 @@ const FoodDetailsScreen = () => {
 
       <View style={styles.detailsContainer}>
         <Text style={styles.foodName}>Big Garden Salad</Text>
-        <View style={styles.infoRow}>
-          <Icon name="star" size={20} color="#FFA500" />
-          <Text style={styles.infoText}>4.8 (4.8k reviews)</Text>
+        <View style={styles.Row}>
+          <Icon name="star" size={18} color="#FFA500" style={{marginRight: 5}}/>
+          <Text style={styles.infoText}>4.8 <Text style={{fontSize: 12, color: '#666'}}>(4.8k reviews)</Text></Text>
         </View>
         <View style={styles.infoRow}>
-          <Icon name="location-outline" size={20} color="#000" />
+         <View style={styles.downRow}>
+          <Icon name="location" size={18} color="#03C04A" style={{marginRight: 5}}/>
           <Text style={styles.infoText}>2.4 km</Text>
-          <Icon name="bicycle-outline" size={20} color="#000" style={styles.iconSpacing} />
-          <Text style={styles.infoText}>$2.00</Text>
+         </View>
+          <View style={{flexDirection:'row', }}>
+            <Text style={{fontSize: 12}}>Delivery Now | </Text>
+            <Icon name="bicycle" size={14} color="#03C04A" style={styles.iconSpacing} />
+            <Text style={{fontSize: 12}}> $2.00</Text>
+          </View>
         </View>
         <TouchableOpacity style={styles.offerButton}>
-          <Icon name="pricetag-outline" size={20} color="#000" />
+          <Icon name="pricetag" size={20} color="#03C04A" style={{marginRight: 5}}/>
           <Text style={styles.offerText}>Offers are available</Text>
         </TouchableOpacity>
 
@@ -76,6 +90,7 @@ const FoodDetailsScreen = () => {
         ))}
       </View>
     </ScrollView>
+    </>
   );
 };
 
@@ -98,10 +113,12 @@ const drinkItems = [
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F5F5F5',
+    marginTop: 25,
   },
   imageContainer: {
     position: 'relative',
+    marginBottom: 10
   },
   foodImage: {
     width: '100%',
@@ -112,14 +129,10 @@ const styles = StyleSheet.create({
     top: 16,
     left: 16,
     right: 16,
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  icon: {
-    backgroundColor: '#fff',
-    borderRadius: 16,
-    padding: 8,
   },
   rightIcons: {
     flexDirection: 'row',
@@ -129,32 +142,49 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   foodName: {
-    fontSize: 24,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom: 10,
   },
   infoRow: {
+    padding: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e6e6e6'
+  },
+  Row:{
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e6e6e6',
+    padding: 8
+  },
+  downRow:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 4
   },
   infoText: {
     fontSize: 16,
     marginLeft: 4,
-    color: '#666',
+    color: '#000',
+    fontWeight: 'bold'
   },
   iconSpacing: {
-    marginLeft: 16,
+    marginLeft: 4,
   },
   offerButton: {
     flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e6e6e6',
+    padding: 4
   },
   offerText: {
     fontSize: 16,
     marginLeft: 4,
     color: '#000',
+    fontWeight: 'bold'
   },
   sectionTitle: {
     fontSize: 20,
