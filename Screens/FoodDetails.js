@@ -38,7 +38,7 @@ const FoodDetailsScreen = () => {
         <Text style={styles.foodName}>Big Garden Salad</Text>
         <View style={styles.Row}>
           <Icon name="star" size={18} color="#FFA500" style={{marginRight: 5}}/>
-          <Text style={styles.infoText}>4.8 <Text style={{fontSize: 12, color: '#666'}}>(4.8k reviews)</Text></Text>
+          <Text style={styles.infoText}>4.8 <Text style={{fontSize: 12, color: 'gray'}}>(4.8k reviews)</Text></Text>
         </View>
         <View style={styles.infoRow}>
          <View style={styles.downRow}>
@@ -46,9 +46,9 @@ const FoodDetailsScreen = () => {
           <Text style={styles.infoText}>2.4 km</Text>
          </View>
           <View style={{flexDirection:'row', }}>
-            <Text style={{fontSize: 12}}>Delivery Now | </Text>
+            <Text style={{fontSize: 12, color: 'gray', fontWeight: 'bold'}}>Delivery Now | </Text>
             <Icon name="bicycle" size={14} color="#03C04A" style={styles.iconSpacing} />
-            <Text style={{fontSize: 12}}> $2.00</Text>
+            <Text style={{fontSize: 12, color: 'gray', fontWeight: 'bold'}}> $2.00</Text>
           </View>
         </View>
         <TouchableOpacity style={styles.offerButton}>
@@ -97,6 +97,8 @@ const FoodDetailsScreen = () => {
 const forYouItems = [
   { name: 'Mixed Vegetable Salad', price: '12.00', image: require('../assets/Images/fruitsalad.jpg') },
   { name: 'Fruit & Spice Salad', price: '10.00', image: require('../assets/Images/fruitsalad.jpg') },
+  { name: 'Fruit & Spice Salad', price: '10.00', image: require('../assets/Images/fruitsalad.jpg') },
+  { name: 'Fruit & Spice Salad', price: '10.00', image: require('../assets/Images/fruitsalad.jpg') },
 ];
 
 const menuItems = [
@@ -107,6 +109,8 @@ const menuItems = [
 
 const drinkItems = [
   { name: 'Fresh Avocado Juice', price: '4.00', image: require('../assets/Images/fruitsalad.jpg') },
+  { name: 'Fresh Orange Juice', price: '3.00', image: require('../assets/Images/fruitsalad.jpg') },
+  { name: 'Fresh Orange Juice', price: '3.00', image: require('../assets/Images/fruitsalad.jpg') },
   { name: 'Fresh Orange Juice', price: '3.00', image: require('../assets/Images/fruitsalad.jpg') },
 ];
 
@@ -197,31 +201,47 @@ const styles = StyleSheet.create({
   horizontalCard: {
     width: 150,
     marginRight: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    padding: 18,
+    backgroundColor: '#fff',
+    borderRadius: 20
   },
   horizontalImage: {
     width: '100%',
-    height: 100,
-    borderRadius: 8,
+    height: 120,
+    borderRadius: 20,
   },
   cardText: {
-    fontSize: 16,
+    fontSize: 14,
     marginTop: 8,
     marginBottom: 4,
+    fontWeight: 'bold'
   },
   cardPrice: {
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: 'bold',
+    color: '#03C04A'
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 16,
+    backgroundColor: '#fff',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    padding: 15,
+    borderRadius: 20
   },
   menuImage: {
     width: 80,
     height: 80,
-    borderRadius: 8,
     marginRight: 16,
+    borderRadius: 20
   },
   menuInfo: {
     flex: 1,
@@ -229,10 +249,12 @@ const styles = StyleSheet.create({
   menuName: {
     fontSize: 16,
     marginBottom: 4,
+    fontWeight: 'bold'
   },
   menuPrice: {
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: 'bold',
+    color: '#03C04A'
   },
 });
 
