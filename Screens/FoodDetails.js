@@ -35,15 +35,22 @@ const FoodDetailsScreen = () => {
       </View>
 
       <View style={styles.detailsContainer}>
-        <Text style={styles.foodName}>Big Garden Salad</Text>
+        <View style={{flexDirection: 'row', alignItems:'center'}}>
+          <Text style={styles.foodName}>Big Garden Salad</Text>
+          <TouchableOpacity>
+          <Icon name="chevron-forward" size={20} color="#000" />
+          </TouchableOpacity>
+        </View>
         <View style={styles.Row}>
           <Icon name="star" size={18} color="#FFA500" style={{marginRight: 5}}/>
-          <Text style={styles.infoText}>4.8 <Text style={{fontSize: 12, color: 'gray'}}>(4.8k reviews)</Text></Text>
+          <Text style={styles.infoText}>4.8 <Text style={{fontSize: 12, color: 'gray', marginRight: 118}}>(4.8k reviews)</Text></Text>
+          <Icon name="chevron-forward" size={20} color="#000" />
         </View>
         <View style={styles.infoRow}>
          <View style={styles.downRow}>
           <Icon name="location" size={18} color="#03C04A" style={{marginRight: 5}}/>
           <Text style={styles.infoText}>2.4 km</Text>
+          <Icon name="chevron-forward" size={20} color="#000" style={{marginLeft: 160}}/>
          </View>
           <View style={{flexDirection:'row', }}>
             <Text style={{fontSize: 12, color: 'gray', fontWeight: 'bold'}}>Delivery Now | </Text>
@@ -54,6 +61,7 @@ const FoodDetailsScreen = () => {
         <TouchableOpacity style={styles.offerButton}>
           <Icon name="pricetag" size={20} color="#03C04A" style={{marginRight: 5}}/>
           <Text style={styles.offerText}>Offers are available</Text>
+          <Icon name="chevron-forward" size={20} color="#000" />
         </TouchableOpacity>
 
         <Text style={styles.sectionTitle}>For You</Text>
@@ -149,6 +157,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 10,
+    marginRight: 90
   },
   infoRow: {
     padding: 8,
@@ -187,6 +196,7 @@ const styles = StyleSheet.create({
   offerText: {
     fontSize: 16,
     marginLeft: 4,
+    marginRight: 80,
     color: '#000',
     fontWeight: 'bold'
   },
